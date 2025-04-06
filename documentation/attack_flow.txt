@@ -1,0 +1,65 @@
++---------------------+                  +------------------------+
+|                     |                  |                        |
+|  Attacker           |  Tor             |  SecureDrop Source     |
+|  Creates Malicious  +------------------>  Interface             |
+|  File               |                  |                        |
+|                     |                  |  No Content Validation  |
++---------------------+                  +------------------------+
+                                                     |
+                                                     | File Uploaded
+                                                     v
+                                         +------------------------+
+                                         |                        |
+                                         |  SecureDrop Server     |
+                                         |                        |
+                                         |  Compression & GPG     |
+                                         |  Encryption            |
+                                         |                        |
+                                         +------------------------+
+                                                     |
+                                                     | File Stored
+                                                     v
+                                         +------------------------+
+                                         |                        |
+                                         |  Journalist Interface  |
+                                         |                        |
+                                         +------------------------+
+                                                     |
+                                                     | File Downloaded
+                                                     v
+                     +------------------------+     +------------------------+
+                     |                        |     |                        |
+                     |  Air-Gapped Machine    |     |  Journalist Downloads  |
+                     |  (Tails or QubesOS)    <-----+  Encrypted File        |
+                     |                        |     |                        |
+                     +------------------------+     +------------------------+
+                                |
+                                | File Decrypted
+                                v
+                     +------------------------+
+                     |                        |
+                     |  Document Opened in    |
+                     |  Viewer Application    |
+                     |                        |
+                     +------------------------+
+                                |
+                                | Malicious Content Executed
+                                v
+                     +------------------------+
+                     |                        |
+                     |  Code Execution on     |
+                     |  Air-Gapped Machine    |
+                     |                        |
+                     +------------------------+
+                                |
+                                | Potential Impact
+                                v
+         +---------------------------------------------+
+         |                                             |
+         |  - Exfiltration of Decrypted Documents     |
+         |  - Installation of Persistent Malware       |
+         |  - Credential Theft                         |
+         |  - Source Identity Compromise               |
+         |  - Complete System Compromise               |
+         |                                             |
+         +---------------------------------------------+
