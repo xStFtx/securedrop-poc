@@ -34,7 +34,7 @@ This proof of concept demonstrates the vulnerability by creating a specially cra
 
 1. `make_malicious_pdf.py` - Script to generate a PDF with an embedded JavaScript payload
 2. `malicious.pdf` - Example malicious PDF that demonstrates the vulnerability
-3. `setup_poc.sh` - Script to set up a local SecureDrop instance and test the vulnerability
+3. `simulate_attack.py` - Script that demonstrates the full attack chain
 4. `documentation/` - Additional documentation and evidence of the vulnerability
 
 ### Attack Scenario:
@@ -49,9 +49,9 @@ This proof of concept demonstrates the vulnerability by creating a specially cra
 To test this vulnerability in a safe environment:
 
 1. Clone this repository: `git clone https://github.com/xStFtx/securedrop-poc.git`
-2. Set up a development instance of SecureDrop according to their instructions
-3. Run the setup script: `./setup_poc.sh`
-4. Follow the documentation to upload the malicious PDF and observe the behavior when opened
+2. Install dependencies: `pip install -r requirements.txt`
+3. Run the simulation: `python simulate_attack.py`
+4. To create a malicious PDF: `python make_malicious_pdf.py`
 
 ## Impact
 
@@ -62,11 +62,9 @@ This vulnerability could allow attackers to:
 3. Compromise the anonymity of sources
 4. Gain access to the journalist's credentials
 
-According to SecureDrop's bug bounty program, this qualifies as a P1 vulnerability worth $2000+ since it enables "RCE on the source interface" and the "recovery of decrypted SecureDrop submissions."
-
 ## Responsible Disclosure
 
-This vulnerability has been responsibly disclosed to the Freedom of the Press Foundation through their bug bounty program on Bugcrowd.
+This vulnerability has been responsibly disclosed to the Freedom of the Press Foundation through their bug bounty program.
 
 ## Legal Disclaimer
 

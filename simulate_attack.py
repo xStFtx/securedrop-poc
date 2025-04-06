@@ -139,8 +139,8 @@ def simulate_attack():
     print("\n" + "=" * 100)
     print("SECUREDROP FILE UPLOAD VULNERABILITY - PROOF OF CONCEPT COMPLETED")
     print("=" * 100)
-    print("\nThis is a P1-level vulnerability ($2000-$2500) according to SecureDrop's bug bounty program.")
-    print("It demonstrates both 'RCE on the source interface' and 'Recovery of decrypted SecureDrop submissions'.")
+    print("\nThis demonstrates a critical security vulnerability in the SecureDrop system.")
+    print("It shows how the current file upload handling can lead to code execution in the air-gapped environment.")
 
 if __name__ == "__main__":
     simulate_attack() 

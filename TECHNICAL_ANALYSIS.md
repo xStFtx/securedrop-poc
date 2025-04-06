@@ -5,9 +5,7 @@
 This document provides a technical analysis of the vulnerability discovered in SecureDrop's file upload handling mechanism. The vulnerability allows an attacker to upload malicious files through the source interface that, when opened by journalists on air-gapped machines, can execute arbitrary code.
 
 **Vulnerability Type**: Remote Code Execution (RCE)  
-**Severity**: P1 (Critical)  
-**CVSS Score**: 8.8 (High)  
-**Bug Bounty Category**: $2000-$2500 reward tier
+**Severity**: Critical  
 
 ## Vulnerable Code
 

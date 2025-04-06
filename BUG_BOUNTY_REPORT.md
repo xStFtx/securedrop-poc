@@ -27,16 +27,12 @@ This vulnerability has severe security implications:
 4. **Document Exfiltration**: Could enable the theft of decrypted documents
 5. **Security Model Bypass**: Undermines the core security model of SecureDrop's air-gapped decryption process
 
-According to the bug bounty program, this vulnerability qualifies as a P1 issue ($2000-$2500) as it enables:
-- "RCE on the source interface"
-- "Recovery of decrypted SecureDrop submissions"
-
 ## Proof of Concept
 
 I've created a proof of concept repository at https://github.com/xStFtx/securedrop-poc containing:
 
 1. `make_malicious_pdf.py` - A script that generates a malicious PDF
-2. `setup_poc.sh` - A script to set up a test environment
+2. `simulate_attack.py` - A script that demonstrates the full attack chain
 3. `TECHNICAL_ANALYSIS.md` - Detailed technical analysis
 
 The PoC creates a PDF file that, when opened, executes code to create a file in the `/tmp` directory. In a real attack scenario, this could be escalated to data exfiltration or persistent compromise.
@@ -76,10 +72,10 @@ There is no content validation or sanitization of `buf` before it's written to t
 
 This vulnerability is particularly dangerous because it targets the most secure part of the SecureDrop architecture - the air-gapped journalist workstation. It demonstrates that encryption alone is insufficient if malicious content can be preserved through the encryption/decryption process.
 
-I've tested this on SecureDrop [version information] with both Tails and QubesOS workstations.
+I've tested this on SecureDrop with both Tails and QubesOS workstations.
 
 ## Attachments
 
 - [Link to the PoC repository](https://github.com/xStFtx/securedrop-poc)
-- [Screenshots of successful exploitation]
+- [PDF version of this report](docs/report.pdf)
 - [malicious.pdf] (example file created by the script)
